@@ -1,0 +1,9 @@
+sudo: required
+services: docker
+language: generic
+
+before_install:
+  - docker build -t dockerquark/docker_practice -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true dockerquark/docker_practice yarn test
